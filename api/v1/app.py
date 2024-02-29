@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""Starts a Flask Web app"""
 from flask import Flask
 from models import storage
 import os
