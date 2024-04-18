@@ -9,7 +9,7 @@ from models.place import Place
 from models.state import State
 from models.review import Review
 from models.amenity import Amenity
-
+from werkzeug.exceptions import HTTPException
 
 @app_views.route("/status", methods=["GET"])
 def status():
@@ -33,3 +33,13 @@ def stats():
     for key, value in objs.items():
         stat[key] = storage.count(value)
     return jsonify(stat)
+
+"""
+@app_views.errorhandler(HTTPException)
+def page_not_found(error):
+    response = error.get_response()
+    response = jsonify({"error": "Not found"})
+    response.status_code = 404
+    response.content_type = "application/json"
+    return response
+"""
